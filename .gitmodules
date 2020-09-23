@@ -1,0 +1,3 @@
+[submodule "kdis/beaengine"]
+	path = kdis/beaengine
+	url = https://github.com/carloslack/beaengine.git
