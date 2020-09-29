@@ -17,6 +17,10 @@ obj-m := kdis.o
 all:
 	make  -C  /lib/modules/$(shell uname -r)/build M=$(PWD) modules
 
+lgtm:
+	make  -C  /lib/modules/$(shell dpkg --status linux-headers-generic |grep ^Depends| \
+		cut -d ":" -f2| sed 's/ linux-headers-//g')/build M=$(PWD) modules
+
 clean:
 	@make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
 	@rm -f *.o
