@@ -19,13 +19,13 @@ static void read_fs(pid_t pid)
 {
     struct vm_area_struct *vma;
     struct page *page;
-    const char *filename;
+    const char *binary;
     void *page_addr;
     Elf32_Ehdr* ehdr;
     struct task_struct *tsk = get_pid_task(find_get_pid(my_pid), PIDTYPE_PID);
 
     if(!tsk || !tsk->mm)
-        goto error_tsk;
+        goto warn_tsk;
 
     vma = tsk->mm->mmap;
     if (!vma)
@@ -34,9 +34,9 @@ static void read_fs(pid_t pid)
     if (!vma->vm_file)
         goto error_file;
 
-    filename = vma->vm_file->f_path.dentry->d_name.name;
+    binary = vma->vm_file->f_path.dentry->d_name.name;
 
-    pr_info("[!] Retrieving Elf64 from '%s'\n", filename);
+    pr_info("[!] Retrieving Elf64 from '%s'\n", binary);
 
     page = find_get_page(vma->vm_file->f_mapping, 0);
     if (!page)
@@ -72,9 +72,12 @@ error_vma:
     pr_info("Error: invalid vma\n");
     return;
 
-error_tsk:
-    pr_info("Error: failed to retrieve task for pid %d\n", pid);
-    return;
+    /*
+     * It is either a kernel thread or
+     * non existent PID
+     */
+warn_tsk:
+    pr_info("No task found for PID %d\n", pid);
 }
 
 static int __init stat_init(void) {

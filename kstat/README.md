@@ -4,7 +4,7 @@
     make
 
 ## Run
-    insmod ./kstat.ko my_pid<#pid>
+    insmod ./kstat.ko my_pid=<#pid>
 
     This example shows a few useful use cases when writing
     a LKM:
