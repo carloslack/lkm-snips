@@ -147,17 +147,17 @@ fail:
     pr_info("Failed to read task\n");
 }
 
-static int __init stat_init(void) {
+static int __init lkm_init(void) {
     pr_info("Checking PID: %d\n", my_pid);
     read_fs(get_pid_task(find_get_pid(my_pid), PIDTYPE_PID));
 
     return 0;
 }
 
-static void __exit stat_cleanup(void) {
+static void __exit lkm_cleanup(void) {
     pr_info("task unloaded\n");
 }
 
-module_init(stat_init);
-module_exit(stat_cleanup);
+module_init(lkm_init);
+module_exit(lkm_cleanup);
 

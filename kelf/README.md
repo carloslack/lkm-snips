@@ -4,10 +4,9 @@
     make
 
 ## About
-    Manipulating ELF elf objects from within the kernel is not the kind of module
-    that is so easily found out there. The kernel itself does it a lot: for core
-    dumps,  everytime you run a program and etc... , however
-    from an external LKM is it less common.
+    Manipulating ELF elf objects in the kernel is not so usual 
+    but in the kernel it is done a lot: for core
+    dumps,  everytime you run a program and etc...
 
     This is useful, however, in security and debugging, extending from this
     code would be very feasible in creating a Elf injection module, fuzzer and
@@ -44,7 +43,7 @@
     --- snip ---
 
 ## Notes
-    Running against kthreads PID's will fail as they to not have
+    Running against kthread PID will fail as they to not have
     an associated executable file.
 
 # Tests

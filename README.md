@@ -30,5 +30,5 @@
     Use cases e.g.: ELF runtime infection, IDS's ...
 
 ### Kstat
-    Read inode stats from given running proces.
+    Read inode stats from given running process.
     Again, the file is always the one that originate the PID.
