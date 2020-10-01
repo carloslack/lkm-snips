@@ -62,7 +62,7 @@ error:
     return 0;
 }
 
-static int __init kdis_init(void) {
+static int __init lkm_init(void) {
     /*
      * Use vfs_rmmdir as example.
      * Could be any /proc/kallsyms
@@ -74,12 +74,12 @@ static int __init kdis_init(void) {
     return 0;
 }
 
-static void __exit kdis_cleanup(void) {
+static void __exit lkm_cleanup(void) {
     pr_info("kdis unloaded\n");
 }
 
-module_init(kdis_init);
-module_exit(kdis_cleanup);
+module_init(lkm_init);
+module_exit(lkm_cleanup);
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Carlos Carvalho");
 

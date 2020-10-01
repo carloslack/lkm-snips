@@ -80,7 +80,7 @@ warn_tsk:
     pr_info("No task found for PID %d\n", pid);
 }
 
-static int __init stat_init(void) {
+static int __init lkm_init(void) {
     pr_info("kelf loading...\n");
     pr_info("Checking PID: %d\n", my_pid);
     read_fs((pid_t)my_pid);
@@ -88,10 +88,10 @@ static int __init stat_init(void) {
     return 0;
 }
 
-static void __exit stat_cleanup(void) {
+static void __exit lkm_cleanup(void) {
     pr_info("kelf unloaded\n");
 }
 
-module_init(stat_init);
-module_exit(stat_cleanup);
+module_init(lkm_init);
+module_exit(lkm_cleanup);
 
