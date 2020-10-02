@@ -3,10 +3,7 @@
  *  Carlos Carvalho
  *  Linux ubuntu 5.4.0-42-generic
  *
- *  POC showing a simple use case for
- *  BeaEngine <https://github.com/BeaEngine/beaengine>
- *  but patched to run on Linux kernel
- *      <https://github.com/carloslack/beaengine/tree/hack-da-shit-out-of-it>
+ *  POC showing a simple use case for Beaengine
  *
  */
 #include <linux/init.h>

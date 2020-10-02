@@ -18,7 +18,7 @@
 ### Kdis
     Disassembler that uses Beaengine engine,
     patched to load from kernel modules:
-        LKM's https://github.com/carloslack/beaengine/tree/hack-da-shit-out-of-it
+        https://github.com/carloslack/beaengine/tree/use_in_kernel_patch
     to dump the first bytes that make up of a kernel object, like a syscall,
     API or structure.
     Use cases e.g.: kernel function trampoline, rootkits, anti-rootkits and IDS's ...
