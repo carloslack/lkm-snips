@@ -33,5 +33,8 @@
     Read inode stats from given running process.
     Again, the file is always the one that originate the PID.
 
+### Knf
+    Kernel netfilter usage example.
+
 ### Gotchas
     All these modules have been tested only on 5.4.0-48-generic.
