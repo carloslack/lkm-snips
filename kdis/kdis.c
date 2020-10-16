@@ -25,8 +25,7 @@
 
 static int disas(void *nr)
 {
-    int total = 0;
-    int instr_size = 0;
+    int total = 0, blocklen = 0;
     int i;
     DISASM MyDisasm;
 
@@ -41,14 +40,14 @@ static int disas(void *nr)
      */
     for(i = 0; i < 12 && total < JMPLEN ; i++) {
         int j;
-        instr_size = Disasm(&MyDisasm);
-        if (instr_size <= 0)
+        blocklen = Disasm(&MyDisasm);
+        if (blocklen <= 0)
             goto error;
-        pr_info("instr_size: %d\n", instr_size);
-        for(j = 0; j < instr_size; j++)
+        pr_info("blocklen: %d\n", blocklen);
+        for(j = 0; j < blocklen; j++)
             pr_info("%02x ", *(((unsigned char *)MyDisasm.EIP)+j));
-        total += instr_size;
-        MyDisasm.EIP += instr_size;
+        total += blocklen;
+        MyDisasm.EIP += blocklen;
 
         pr_info("\n");
     }
