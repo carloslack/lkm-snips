@@ -9,8 +9,8 @@
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/version.h>
-#include <linux/kallsyms.h>
 #include <linux/kernel_stat.h>
+#include <linux/fs.h>
 
 #include "BeaEngine.h"
 #include "BeaEngine.c"
@@ -64,7 +64,7 @@ static int __init lkm_init(void) {
      * Could be any /proc/kallsyms
      */
     int (*fp)(struct inode*, struct dentry*) =
-        (int (*)(struct inode*, struct dentry*))kallsyms_lookup_name("vfs_rmdir");
+        (int (*)(struct inode*, struct dentry*))vfs_rmdir;
     disas(fp);
 
     return 0;
