@@ -61,7 +61,6 @@ error:
 static int __init lkm_init(void) {
     /*
      * Use vfs_rmmdir as example.
-     * Could be any /proc/kallsyms
      */
     int (*fp)(struct inode*, struct dentry*) =
         (int (*)(struct inode*, struct dentry*))vfs_rmdir;
