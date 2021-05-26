@@ -111,7 +111,7 @@ static void read_fs(struct task_struct *tsk)
         goto fail;
 
     op = i->i_op;
-    if(!op)
+    if(!op || !op->getattr)
         goto fail;
 
     memset(&stat, 0, sizeof(struct kstat));
