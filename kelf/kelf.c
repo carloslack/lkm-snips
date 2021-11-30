@@ -5,6 +5,8 @@
  *
  *  Access ELF headers from loaded/running executables
  *
+ *  Example in 64 bits
+ *
  */
 #include <linux/module.h>
 #include <linux/pagemap.h>
@@ -21,7 +23,7 @@ static void read_fs(pid_t pid)
     struct page *page;
     const char *binary;
     void *page_addr;
-    Elf32_Ehdr* ehdr;
+    Elf64_Ehdr* ehdr;
     struct task_struct *tsk = get_pid_task(find_get_pid(my_pid), PIDTYPE_PID);
 
     if(!tsk || !tsk->mm)
@@ -43,7 +45,7 @@ static void read_fs(pid_t pid)
         goto error_page;
 
     page_addr = kmap_atomic(page);
-    ehdr = (Elf32_Ehdr*)page_addr;
+    ehdr = (Elf64_Ehdr*)page_addr;
 
     // Parse ELF header
     pr_info("page_addr=%p\n", ehdr);
